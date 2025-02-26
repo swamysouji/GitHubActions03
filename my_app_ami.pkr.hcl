@@ -23,7 +23,7 @@ source "amazon-ebs" "ubuntu" {
       virtualization-type = "hvm"
     }
     most_recent = true
-    owners      = ["099720109477"]
+    owners      = ["374168611083"]
   }
   ssh_username = "ubuntu"
 }
@@ -61,10 +61,18 @@ build {
 
 variable "my_region" {
   type = string
-  default = "us-east-2"
+  default = "us-west-1"
 }
 
 variable "source_ami_name" {
   type = string
-  default = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
+  default = "us-west-1 image for Ubuntu_22.04"
+}
+variable "aws_access_key" {
+  type = string
+  default = "ASIAWIJIU5DAZT4H4VAL"
+}
+variable "aws_secret_key" {
+  type = string
+  default = "WasIcx1ibE9hPfiQoDaivJ4EpVo7dJ7QKfiWJ7rl"
 }

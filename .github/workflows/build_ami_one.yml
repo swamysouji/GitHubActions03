@@ -1,9 +1,13 @@
 name: Build Our AMI 
 run-name: ${{ github.actor }} is building AMI
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 jobs:
   BuildMyAppContainerImage:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - run: echo "Does this work?"
       - name: Setup Code
@@ -11,13 +15,18 @@ jobs:
       - name: Check that checkout worked
         run: ls -lh
       - name: Get Packer
-        run: sudo apt install -y packer
+        run: |
+          echo "***apt install -y packer***"
+          sudo apt install -y packer
+          packer --version
       - name: Build Image
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         run: |
+          echo "Building the AMI"
+          echo "AWS_ACCESS: $AWS_ACCESS_KEY_ID"
           packer init .
           packer build my_app_ami.pkr.hcl
       
