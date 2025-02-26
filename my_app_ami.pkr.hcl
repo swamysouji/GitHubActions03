@@ -68,11 +68,3 @@ variable "source_ami_name" {
   type = string
   default = "us-west-1 image for Ubuntu_22.04"
 }
-variable "aws_access_key" {
-  type = string
-  default = "ASIAWIJIU5DAZT4H4VAL"
-}
-variable "aws_secret_key" {
-  type = string
-  default = "WasIcx1ibE9hPfiQoDaivJ4EpVo7dJ7QKfiWJ7rl"
-}
